@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Infrastructure\Entity.cs" />
     <Compile Include="Infrastructure\IEntity.cs" />
+    <Compile Include="Infrastructure\IUnitOfWork.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Task.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
