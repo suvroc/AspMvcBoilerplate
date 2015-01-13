@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="Core" namespace="Core.Domain.Models" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Task" table="Tasks" lazy="true" >
+    <id name="TaskId" column="TaskId" />
+    <many-to-one name="Category">
+      <column name="CategoryId" sql-type="int" not-null="true" />
+    </many-to-one>
+    <property name="Name">
+      <column name="Name" sql-type="varchar" not-null="true" />
+    </property>
+    <property name="Description">
+      <column name="Description" sql-type="varchar" not-null="true" />
+    </property>
+    <property name="Status">
+      <column name="Status" sql-type="char" not-null="true" />
+    </property>
+  </class>
+</hibernate-mapping>

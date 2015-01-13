@@ -3,6 +3,7 @@
 - database models
 - types for database models
 - typed repositories interfaces
+- interfaces of data infrastructure
 
 # Checklist (database first)
 1. Update all libraries

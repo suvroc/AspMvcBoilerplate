@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Core.Domain.Infrastructure
 {
-    public interface IRepository<TEntity, TPrimaryKey>
+    public interface IRepository<TEntity> : IKeyRepository<TEntity, int>
     {
         IQueryable<TEntity> GetAll();
         TEntity Get(Expression<Func<TEntity, bool>> expression);
@@ -17,6 +17,5 @@ namespace Core.Domain.Infrastructure
         bool Update(TEntity entity);
         bool Delete(TEntity entity);
         bool Delete(IEnumerable<TEntity> entities);
-        TEntity GetById(TPrimaryKey id);
     }
 }

@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Core.Domain.Infrastructure
 {
-    public class Entity : IEntity<int>
+    public interface IKeyRepository<TEntity, TPrimaryKey>
     {
-        public virtual int Id { get; set; }
+        TEntity GetById(TPrimaryKey id);
     }
 }

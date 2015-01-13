@@ -31,6 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -41,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Infrastructure\Entity.cs" />
     <Compile Include="Infrastructure\IEntity.cs" />
+    <Compile Include="Infrastructure\IKeyRepository.cs" />
     <Compile Include="Infrastructure\IUnitOfWork.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Task.cs" />

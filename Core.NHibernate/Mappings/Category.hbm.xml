@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="Core" namespace="Core.Domain.Models" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Category" table="Categories" lazy="true" >
+    <id name="CategoryId" column="CategoryId" />
+    <property name="Name">
+      <column name="Name" sql-type="varchar" not-null="true" />
+    </property>
+    <bag name="Tasks" inverse="true">
+      <key column="CategoryId" />
+      <one-to-many class="Task" />
+    </bag>
+  </class>
+</hibernate-mapping>
