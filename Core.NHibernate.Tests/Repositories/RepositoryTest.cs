@@ -6,6 +6,8 @@ using System.Text;
 using NHibernate.Linq;
 using Core.Domain.Models;
 using Ploeh.AutoFixture;
+using FluentNHibernate.Testing;
+using Ploeh.AutoFixture.NUnit2;
 
 namespace Core.NHibernate.Tests.Repositories
 {
@@ -33,6 +35,15 @@ namespace Core.NHibernate.Tests.Repositories
                 .SingleOrDefault(x => x.Id == obj.Id);
 
             Assert.NotNull(result);
+        }
+
+        [Test]
+        public void CheckAllMappings()
+        {
+            var fixture = new Fixture();
+            fixture.Inject(Enumerable.Empty<Task>());
+            new PersistenceSpecification<Category>(_session)
+            .VerifyTheMappings(fixture.Create<Category>());
         }
     }
 }

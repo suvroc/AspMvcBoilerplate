@@ -39,11 +39,20 @@
     <Reference Include="NHibernate">
       <HintPath>..\packages\NHibernate.4.0.2.4000\lib\net40\NHibernate.dll</HintPath>
     </Reference>
+    <Reference Include="nunit.core.interfaces">
+      <HintPath>..\packages\AutoFixture.NUnit2.3.22.0\lib\net40\nunit.core.interfaces.dll</HintPath>
+    </Reference>
     <Reference Include="nunit.framework">
       <HintPath>..\packages\NUnit.2.6.4\lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="Ploeh.AutoFixture">
       <HintPath>..\packages\AutoFixture.3.22.0\lib\net40\Ploeh.AutoFixture.dll</HintPath>
+    </Reference>
+    <Reference Include="Ploeh.AutoFixture.NUnit2">
+      <HintPath>..\packages\AutoFixture.NUnit2.3.22.0\lib\net40\Ploeh.AutoFixture.NUnit2.dll</HintPath>
+    </Reference>
+    <Reference Include="Ploeh.AutoFixture.NUnit2.Addins">
+      <HintPath>..\packages\AutoFixture.NUnit2.3.22.0\lib\net40\Ploeh.AutoFixture.NUnit2.Addins.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -56,6 +65,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseNHibernateTest.cs" />
+    <Compile Include="Infrastructure\AutoMoqDataAttribute.cs" />
+    <Compile Include="Infrastructure\RollbackAttribute.cs" />
+    <Compile Include="LocalAddin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\RepositoryTest.cs" />
   </ItemGroup>
