@@ -1,4 +1,5 @@
-﻿using Application.Business.Tasks;
+﻿using Application.Business.Mappings;
+using Application.Business.Tasks;
 using Ninject.Modules;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,8 @@ namespace Application.Business.Dependency
         public override void Load()
         {
             Bind<ITaskService>().To<TaskService>();
+
+            DtoMappings.Map();
         }
     }
 }

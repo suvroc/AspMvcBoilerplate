@@ -20,7 +20,7 @@ namespace Application.Business.Tasks
             _taskRepository = taskRepository;
         }
 
-        public Dto.TaskDto GetTast(int id)
+        public Dto.TaskDto GetTask(int id)
         {
             return Mapper.Map<TaskDto>(_taskRepository.GetById(id));
         }

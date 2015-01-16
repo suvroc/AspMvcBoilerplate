@@ -9,7 +9,7 @@ namespace Application.Business.Tasks
 {
     public interface ITaskService
     {
-        TaskDto GetTast(int id);
+        TaskDto GetTask(int id);
 
         List<TaskDtoLight> GetAll();
 
