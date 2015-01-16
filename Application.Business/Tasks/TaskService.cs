@@ -14,10 +14,13 @@ namespace Application.Business.Tasks
     public class TaskService : ITaskService
     {
         private IRepository<Task> _taskRepository;
+        private IRepository<Category> _categoryRepository;
 
-        public TaskService(IRepository<Task> taskRepository)
+        public TaskService(IRepository<Task> taskRepository,
+            IRepository<Category> categoryRepository)
         {
             _taskRepository = taskRepository;
+            _categoryRepository = categoryRepository;
         }
 
         public Dto.TaskDto GetTask(int id)
@@ -48,6 +51,16 @@ namespace Application.Business.Tasks
         {
             return _taskRepository.GetAll()
                 .Project().To<TaskDtoLight>();
+        }
+
+
+        public bool AddTask(TaskDto task)
+        {
+            var mappedTask = Mapper.Map<Task>(task);
+            mappedTask.Category = _categoryRepository.GetAll().First();
+            mappedTask.Status = TaskStatus.NotFinished;
+
+            return _taskRepository.Add(mappedTask);
         }
     }
 }

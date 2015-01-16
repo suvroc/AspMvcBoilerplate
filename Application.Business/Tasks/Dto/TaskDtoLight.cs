@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
 
+using Core.Domain.Types;
 namespace Application.Business.Tasks.Dto
 {
     public class TaskDtoLight
     {
+        public int Id { get; set; }
         public virtual string Name { get; set; }
+
         public virtual TaskStatus Status { get; set; }
     }
 }

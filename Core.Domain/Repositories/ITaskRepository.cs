@@ -1,5 +1,5 @@
 ﻿using Core.Domain.Infrastructure;
-using System.Threading.Tasks;
+using Core.Domain.Models;
 
 namespace Core.Domain.Repositories
 {

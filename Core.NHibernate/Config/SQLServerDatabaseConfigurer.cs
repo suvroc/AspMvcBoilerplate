@@ -1,10 +1,5 @@
 ﻿using FluentNHibernate.Cfg.Db;
 using NHibernate.Cfg;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Core.NHibernate.Config
 {
@@ -19,7 +14,6 @@ namespace Core.NHibernate.Config
 
         public void BuildSchema(Configuration configuration)
         {
-
         }
     }
 }

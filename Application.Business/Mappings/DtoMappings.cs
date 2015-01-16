@@ -13,9 +13,14 @@ namespace Application.Business.Mappings
         public static void Map()
         {
             Mapper.CreateMap<Task, TaskDto>()
-                .ForMember(dest => dest.CategoryName, opt => opt.MapFrom(src => src.Category.ToString()));
+                .ForMember(dest => dest.CategoryName, opt => opt.MapFrom(src => src.Category.Name));
 
             Mapper.CreateMap<Task, TaskDtoLight>();
+
+            Mapper.CreateMap<TaskDto, Task>()
+                .ForMember(x => x.Category, x => x.Ignore())
+                .ForMember(x => x.Status, x => x.Ignore())
+                .ForMember(x => x.Id, x => x.Ignore());
 
             Mapper.AssertConfigurationIsValid();
         }
