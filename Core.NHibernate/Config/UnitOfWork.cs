@@ -1,4 +1,5 @@
-﻿using NHibernate;
+﻿using Core.Domain.Infrastructure;
+using NHibernate;
 using System;
 using System.Data;
 
@@ -7,19 +8,14 @@ namespace Core.NHibernate.Config
     public class UnitOfWork : IUnitOfWork
     {
         private readonly ISession Session;
-        private readonly ITransaction transaction;
+        private ITransaction transaction;
 
         public UnitOfWork(ISession session)
         {
             this.Session = session;
             this.Session.FlushMode = FlushMode.Auto;
-            this.transaction = Session.BeginTransaction(IsolationLevel.ReadCommitted);
+            //this.transaction = Session.BeginTransaction(IsolationLevel.ReadCommitted);
         }
-
-        //~UnitOfWork()
-        //{
-        //    this.Dispose();
-        //}
 
         public void Dispose()
         {
@@ -32,6 +28,7 @@ namespace Core.NHibernate.Config
             {
                 throw new InvalidOperationException("No active transation");
             }
+            this.Session.Flush();
             this.transaction.Commit();
         }
 
@@ -40,6 +37,20 @@ namespace Core.NHibernate.Config
             if (this.transaction.IsActive)
             {
                 this.transaction.Rollback();
+            }
+        }
+
+        public void Begin()
+        {
+            this.transaction = Session.BeginTransaction(IsolationLevel.ReadCommitted);
+        }
+
+
+        public bool IsActive
+        {
+            get
+            {
+                return this.transaction.IsActive;
             }
         }
     }

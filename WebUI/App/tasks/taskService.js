@@ -29,7 +29,7 @@
             return promise;
         },
         markTask: function (taskId) {
-            var promise = $http.get('/Task/MarkTaskAsFinished',
+            var promise = $http.post('/Task/MarkTaskAsFinished',
                 {
                     taskId: taskId
                 }).then(function (response) {

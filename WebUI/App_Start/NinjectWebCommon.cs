@@ -14,6 +14,8 @@ namespace WebUI.App_Start
     using Application.Business.Dependency;
     using Core.NHibernate.Dependency;
     using Ninject.Modules;
+    using WebUI.Filters;
+    using Ninject.Web.Mvc.FilterBindingSyntax;
 
     public static class NinjectWebCommon 
     {
@@ -50,6 +52,7 @@ namespace WebUI.App_Start
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
 
                 RegisterServices(kernel);
+                RegisterFilters(kernel);
                 return kernel;
             }
             catch
@@ -70,6 +73,16 @@ namespace WebUI.App_Start
                 new CoreModule(),
                 new ApplicationModule()
             });
-        }        
+        }      
+        
+        /// <summary>
+        /// Load your modules or register your services here!
+        /// </summary>
+        /// <param name="kernel">The kernel.</param>
+        private static void RegisterFilters(IKernel kernel)
+        {
+            kernel.BindFilter<UnitOfWorkFilter>(System.Web.Mvc.FilterScope.Action, 0)
+                    .WhenActionMethodHas<UnitOfWorkAttribute>();
+        }    
     }
 }

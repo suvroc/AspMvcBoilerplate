@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebUI.Filters;
 
 namespace WebUI.Controllers
 {
@@ -31,6 +32,7 @@ namespace WebUI.Controllers
         }
 
         [HttpPost]
+        [UnitOfWork]
         public JsonResult MarkTaskAsFinished(int taskId)
         {
             _taskService.MarkTaskAsFinished(taskId);
